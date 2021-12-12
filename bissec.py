@@ -7,6 +7,8 @@ def bissec(f, a, b, tol=10e-6, filename=None):
     if f(a) * f(b) >= 0:
         return None
     
+    iteration = 1
+
     c = a
 
     x_arr = []
@@ -18,6 +20,7 @@ def bissec(f, a, b, tol=10e-6, filename=None):
         c = (a + b) / 2
         fc = f(c)
 
+        print(f'Iteration {iteration}')
         print(c, fc)
 
         x_arr.append(c)
@@ -31,7 +34,12 @@ def bissec(f, a, b, tol=10e-6, filename=None):
         else:
             a = c
 
-    print(c)
+        iteration += 1
+
+    print('------------------')
+    print('Found a root:')
+    print(c, f(c))
+    print('------------------')
 
     f_vec = np.vectorize(f)
 
@@ -46,12 +54,3 @@ def bissec(f, a, b, tol=10e-6, filename=None):
         plt.show()
 
     return c
-
-def f(x):
-    return x**2 + (x * math.cos(2 * x)) - 3
-
-def main():
-    bissec(f, -1.5, -1)
-
-if __name__ == '__main__':
-    main()
