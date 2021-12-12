@@ -13,7 +13,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: -math.sin(x),
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3a.png'
         )
 
         rounded_val = float('%.5g' % val[0])
@@ -29,7 +30,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: 1,
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3b.png'
         )
 
         rounded_val = float('%.5g' % val[0])
@@ -45,7 +47,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: 2 * x,
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3c.png'
         )
 
         rounded_val = float('%.5g' % val[0])
@@ -61,7 +64,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: (3 * x**2) - (5 * x) - 2.5,
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3d.png'
         )
 
         rounded_val = float('%.5g' % val[0])
@@ -77,7 +81,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: (2 * x) - (2 * x * math.sin(2 * x)) + math.cos(2 * x),
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3e.png'
         )
 
         rounded_val = float('%.5g' % val[0])
@@ -93,7 +98,8 @@ class TestNewton(unittest.TestCase):
             g=lambda x: 2 - (4 * math.sin(2 * x)) - (4 * x * math.cos(2 * x)),
             x0=x0,
             tol=10e-6,
-            N=100
+            N=100,
+            filename='3f.png'
         )
 
         rounded_val = float('%.5g' % val[0])

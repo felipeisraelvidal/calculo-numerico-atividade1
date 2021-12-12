@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def newton(f, g, x0, tol, N):
+def newton(f, g, x0, tol=10e-6, N=100, filename=None):
     iteration = 1
     found_root = True
     
@@ -39,11 +39,17 @@ def newton(f, g, x0, tol, N):
         print('Found a root:')
         print(x1, f(x1))
         print('------------------')
+
+        plt.close()
         
         plt.plot(iters, res)
         plt.xlabel('Iterations')
         plt.ylabel('Error')
-        plt.show()
+
+        if filename:
+            plt.savefig(f'dist/{filename}')
+        else:
+            plt.show()
 
         return (x1, f(x1), iteration, res)
     else:
