@@ -1,5 +1,5 @@
 import unittest
-from bissec import bissec
+from bissec import bissec, bissec2
 import math
 
 class TestBissec(unittest.TestCase):
@@ -31,7 +31,12 @@ class TestBissec(unittest.TestCase):
         self.assertEqual(rounded_val, 3.5)
 
     def test_e(self):
-        val = bissec(lambda x: x**2 + (x * math.cos(2 * x)) - 3, -1.5, -1, filename='2e.png')
+        val = bissec(
+            lambda x: x**2 + (x * math.cos(2 * x)) - 3,
+            -1.5,
+            1,
+            filename='2e.png'
+        )
 
         rounded_val = float('%.5g' % val)
 

@@ -34,6 +34,8 @@ def bissec(f, a, b, tol=10e-6, filename=None):
     print(c)
 
     f_vec = np.vectorize(f)
+
+    plt.close()
     
     plt.scatter(x_arr, y_arr)
     plt.plot(spaced_num, f_vec(spaced_num))
@@ -49,7 +51,7 @@ def f(x):
     return x**2 + (x * math.cos(2 * x)) - 3
 
 def main():
-    bissec(f, -1.5, 1)
+    bissec(f, -1.5, -1)
 
 if __name__ == '__main__':
     main()
