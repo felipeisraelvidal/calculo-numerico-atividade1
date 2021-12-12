@@ -1,5 +1,5 @@
 import unittest
-from bissec import bissec, bissec2
+from bissec import bissec
 import math
 
 class TestBissec(unittest.TestCase):

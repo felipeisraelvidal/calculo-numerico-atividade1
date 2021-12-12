@@ -1,9 +1,8 @@
 import unittest
 from newton import newton
 import math
-import random
 
-class TestBissec(unittest.TestCase):
+class TestNewton(unittest.TestCase):
 
     def test_a(self):
         a = 0
