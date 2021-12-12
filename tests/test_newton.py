@@ -1,59 +1,105 @@
 import unittest
 from newton import newton
 import math
+import random
 
 class TestBissec(unittest.TestCase):
 
     def test_a(self):
-        def f(x):
-            return math.cos(x)
+        a = 0
+        b = 2
+        x0 = 1
+        val = newton(
+            f=lambda x: math.cos(x),
+            g=lambda x: -math.sin(x),
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        def g(f):
-            print('calc d\'')
+        rounded_val = float('%.5g' % val[0])
 
-        val = newton(f, 0, 2)
-
-        self.assertTrue(False)
+        self.assertEqual(rounded_val, 1.57080)
 
     def test_b(self):
-        def f(x):
-            return x
-        
-        val = newton(f, -1, 1)
+        a = -1
+        b = 1
+        x0 = 1
+        val = newton(
+            f=lambda x: x,
+            g=lambda x: 1,
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        self.assertTrue(False)
+        rounded_val = float('%.5g' % val[0])
+
+        self.assertEqual(rounded_val, 0)
 
     def test_c(self):
-        def f(x):
-            return x**2
+        a = -1
+        b = 2
+        x0 = 0.5
+        val = newton(
+            f=lambda x: x**2,
+            g=lambda x: 2 * x,
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        val = newton(f, -1, 2)
+        rounded_val = float('%.5g' % val[0])
 
-        self.assertTrue(False)
+        self.assertEqual(rounded_val, 0.00001)
 
     def test_d(self):
-        def f(x):
-            return x**3 - (2.5 * x**2) - (2.5 * x) - 3.5
+        a = -5.5
+        b = 10.5
+        x0 = -1
+        val = newton(
+            f=lambda x: x**3 - (2.5 * x**2) - (2.5 * x) - 3.5,
+            g=lambda x: (3 * x**2) - (5 * x) - 2.5,
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        val = newton(f, -5.5, 10.5)
+        rounded_val = float('%.5g' % val[0])
 
-        self.assertTrue(False)
+        self.assertEqual(rounded_val, 3.5)
 
     def test_e(self):
-        def f(x):
-            return x**2 + (x * math.cos(2 * x)) - 3
+        a = -1.5
+        b = -1
+        x0 = -1
+        val = newton(
+            f=lambda x: x**2 + (x * math.cos(2 * x)) - 3,
+            g=lambda x: (2 * x) - (2 * x * math.sin(2 * x)) + math.cos(2 * x),
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        val = newton(f, -1.5, -1)
+        rounded_val = float('%.5g' % val[0])
 
-        val = newton(f, -1.5, -1)
+        self.assertEqual(rounded_val, -1.3410)
 
     def test_f(self):
-        def f(x):
-            return (2 * x) + math.cos(2 * x) - ((2 * x) * math.sin(2 * x))
+        a = 1.5
+        b = 2.5
+        x0 = 2
+        val = newton(
+            f=lambda x: (2 * x) + math.cos(2 * x) - ((2 * x) * math.sin(2 * x)),
+            g=lambda x: 2 - (4 * math.sin(2 * x)) - (4 * x * math.cos(2 * x)),
+            x0=x0,
+            tol=10e-6,
+            N=100
+        )
 
-        val = newton(f, 1.5, 2.5)
+        rounded_val = float('%.5g' % val[0])
 
-        val = newton(f, -1.5, -1)
+        self.assertEqual(rounded_val, 1.1848)
 
 if __name__ == '__main__':
     unittest.main()
