@@ -12,6 +12,8 @@ def bissec(f, a, b, tol=10e-6, filename='bissec.png'):
     x_arr = []
     y_arr = []
 
+    spaced_num = linspace(a, b, 50)
+
     while abs(b - a) >= tol:
         c = (a + b) / 2
         fc = f(c)
@@ -31,11 +33,10 @@ def bissec(f, a, b, tol=10e-6, filename='bissec.png'):
 
     print(c)
 
-    z = linspace(a, b, 100)
-    plt.scatter(x_arr, y_arr)
     f_vec = np.vectorize(f)
-    plt.plot(z, f_vec(z), 'r', linestyle='solid')
-    # plt.show()
+    
+    plt.scatter(x_arr, y_arr)
+    plt.plot(spaced_num, f_vec(spaced_num))
     plt.savefig(f'dist/{filename}')
 
     return c
