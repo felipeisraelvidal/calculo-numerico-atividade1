@@ -17,10 +17,6 @@ def mycos(x, iterations = 10):
         sum += signal * term
         
         print(f'Iteration {k}')
-
-        signal_str = '-' if signal == -1 else '+'
-        print(f'{signal_str} x^{2 * k} / {2 * k}!')
-
         print(sum)
 
         if sum == math.cos(x):
@@ -31,10 +27,6 @@ def mycos(x, iterations = 10):
     return sum
 
 if __name__ == '__main__':
-    argument_list = sys.argv[1:]
-    options = 'xi:'
-    long_options = ['--cos', '--iterations']
-
     x = int(sys.argv[1])
     iterations = int(sys.argv[2])
 
