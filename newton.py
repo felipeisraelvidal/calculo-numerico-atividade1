@@ -53,4 +53,4 @@ def newton(f, g, x0, tol=10e-6, N=100, filename=None):
 
         return (x1, f(x1), iteration, res)
     else:
-        print('Não converge')
+        print('Root not found')
