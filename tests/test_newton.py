@@ -51,7 +51,7 @@ class TestBissec(unittest.TestCase):
 
         rounded_val = float('%.5g' % val[0])
 
-        self.assertEqual(rounded_val, 0.00001)
+        self.assertEqual(rounded_val, 0.0019531)
 
     def test_d(self):
         a = -5.5
