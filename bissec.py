@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pylab import *
 
-def bissec(f, a, b, tol=10e-6, filename='bissec.png'):
+def bissec(f, a, b, tol=10e-6, filename=None):
     if f(a) * f(b) >= 0:
         return None
     
@@ -37,7 +37,11 @@ def bissec(f, a, b, tol=10e-6, filename='bissec.png'):
     
     plt.scatter(x_arr, y_arr)
     plt.plot(spaced_num, f_vec(spaced_num))
-    plt.savefig(f'dist/{filename}')
+
+    if filename:
+        plt.savefig(f'dist/{filename}')
+    else:
+        plt.show()
 
     return c
 
