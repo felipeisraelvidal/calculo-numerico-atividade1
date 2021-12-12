@@ -1,43 +1,49 @@
 import math
+import matplotlib.pyplot as plt
+import numpy as np
+from pylab import *
 
 def bissec(f, a, b, tol=10e-6):
-    """
-    f: callback
-    a, b: interval
-    tol: tolerance
-    """
-
-    criteria = abs(b - a) > tol
-
-    fa = f(a)
+    if f(a) * f(b) >= 0:
+        return None
+    
+    c = a
 
     x_arr = []
     y_arr = []
 
-    while criteria:
-        p = (a + b) / 2
-        fp = f(p)
+    while abs(b - a) >= tol:
+        c = (a + b) / 2
+        fc = f(c)
 
-        x_arr.append(p)
-        y_arr.append(fp)
+        print(c, fc)
 
-        if fp == 0 or abs(fp) < ((b - a) / 2) < tol:
-            return (p, x_arr, y_arr)
+        x_arr.append(c)
+        y_arr.append(fc)
+
+        if f(c) == 0:
+            break
         
-        if (fa * fp) > 0:
-            a = p
-            fa = fp
+        if f(c) * f(a) < 0:
+            b = c
         else:
-            b = p
+            a = c
 
-    raise ValueError("No root found")
+    print(c)
+
+    z = linspace(a, b, 100)
+    plt.scatter(x_arr, y_arr)
+    f_vec = np.vectorize(f)
+    plt.plot(z, f_vec(z), 'r', linestyle='solid')
+    plt.show()
+
+    return c
 
 def f(x):
-    return x**2
+    return x**2 + (x * math.cos(2 * x)) - 3
 
 def main():
-    val = bissec(f, -1, 2)
-    print(val)
+    bissec(f, -1.5, 1)
 
 if __name__ == '__main__':
     main()
